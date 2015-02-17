@@ -22,14 +22,6 @@ ActiveRecord::Schema.define(version: 20150203120848) do
 
   add_index "comments", ["secret_id"], name: "index_comments_on_secret_id", using: :btree
 
-  create_table "posts", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.boolean  "approved",    limit: 1
-    t.datetime "updated_at",                null: false
-  end
-
   create_table "secrets", force: :cascade do |t|
     t.string   "title",       limit: 255
     t.text     "description", limit: 65535
