@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203120848) do
+ActiveRecord::Schema.define(version: 20150217170411) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "comment",    limit: 65535
@@ -32,6 +32,23 @@ ActiveRecord::Schema.define(version: 20150203120848) do
   end
 
   add_index "secrets", ["slug"], name: "index_secrets_on_slug", using: :btree
+
+  create_table "simple_hashtag_hashtaggings", force: :cascade do |t|
+    t.integer "hashtag_id",        limit: 4
+    t.integer "hashtaggable_id",   limit: 4
+    t.string  "hashtaggable_type", limit: 255
+  end
+
+  add_index "simple_hashtag_hashtaggings", ["hashtag_id"], name: "index_simple_hashtag_hashtaggings_on_hashtag_id", using: :btree
+  add_index "simple_hashtag_hashtaggings", ["hashtaggable_id", "hashtaggable_type"], name: "index_hashtaggings_hashtaggable_id_hashtaggable_type", using: :btree
+
+  create_table "simple_hashtag_hashtags", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "simple_hashtag_hashtags", ["name"], name: "index_simple_hashtag_hashtags_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

@@ -41,10 +41,12 @@ gem 'social-share-button'
 gem 'cancan'
 gem "friendly_id"
 
+gem 'simple_hashtag'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'pry'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
