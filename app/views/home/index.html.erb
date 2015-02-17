@@ -2,7 +2,21 @@
 	<div class="col-md-3"></div>
 	<div class="col-md-6 text-center">
 		<input type="button" class="btn btn-info post-btn" value="POST A SECRET !"/>
-		<div id="myModal" class="modal fade">
+	</div>
+  <br/><br/>
+  <section id="demo">
+    <% @secrets.each do |s| %>
+      <article class="white-panel">
+        <p><%= s.description %></p>
+        <p><%= s.comments.count %> Comments</p>
+        <p><%= social_share_button_tag(s.title, :url => "http://www.confessbin.com/secrets/#{s.id}") %></p>
+      </article>
+    <% end %>
+  </section>
+</div>
+
+
+<div id="myModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,42 +24,11 @@
                 <h4 class="modal-title">POST A SECRET !</h4>
             </div>
             <div class="modal-body">
-				<%= form_for Secret.new do |f| %>
-					<!-- <input type="text" name="title" class="form-control secret-input" placeholder="Title"/><br/> -->
-					<textarea name="description" class="form-control secret-input" rows="6" placeholder="Discuss more"></textarea><br/>
-					<input type="submit" class="btn btn-info"/>
-				<% end %>
+              <%= form_for Secret.new do |f| %>
+                <textarea name="description" class="form-control secret-input" rows="6" placeholder="Write Your Confession"></textarea><br/>
+                <input type="submit" class="btn btn-info"/>
+              <% end %>
             </div>
-            
         </div>
     </div>
 </div>
-	</div>
-<br/>
-<div class="row">
-<br/>
-<br/>
-<% @secrets.each do |s| %>
-<div class="col-md-3 secret-box">
-	<div class="secret-text">
-		<%= s.description %>
-	</div>
-<hr/>
-<%= s.comments.count %> Comments 
-<%= social_share_button_tag(s.title, :url => "http://www.confessbin.com/secrets/#{s.id}") %>
-</div>
-<!-- Likes:   -->
-<!-- <a href="/new_like//secret">Like</a> -->
-<% end %>
-</div>
-</div>
-<script type="text/javascript">
-$(".secret-text").each(function(){
-	var str = $(this).html();
-	$(this).html(str.substr(0,90)+"<br/><a>Click for more..</a>");
-});
-$(".post-btn").click(function(){
-	$("#myModal").modal('show');
-});
-// $(".post-secret").modal()
-</script>
