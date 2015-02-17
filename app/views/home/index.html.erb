@@ -1,32 +1,39 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        ConfessBin <%= social_share_button_tag("hello", :url => root_path) %>
+      </a>
+    </div>
+  </div>
+</nav>
 <div class="container" id="container">
-	ConfessBin  Share on : <%= social_share_button_tag("hello", :url => root_path) %>
-<%= form_for Secret.new do |f| %>
-
-	<input type="text" name="title" class="form-control"/>
-	<textarea name="description" class="form-control"></textarea>
-<input type="submit"/>
-<% end %>
+	<div class="col-md-3"></div>
+	<div class="col-md-6 text-center">
+		<br/>
+		<h4>POST A NEW SECRET:</h4>
+		<%= form_for Secret.new do |f| %>
+			<!-- <input type="text" name="title" class="form-control secret-input" placeholder="Title"/><br/> -->
+			<textarea name="description" class="form-control secret-input" rows="6" placeholder="Discuss more"></textarea><br/>
+			<input type="submit" class="btn btn-info"/>
+		<% end %>
+	</div>
 <br/>
-<h4>All Secrets</h4><br/><br/>
+<div class="row">
+<br/>
+<br/>
 <% @secrets.each do |s| %>
-<div class="item">
-<%= link_to s.title, secret_path(s) %>
-<br/>
+<div class="col-md-3 secret-box">
 <%= s.description %>
-<br/>
+<hr/>
 Comments: <%= s.comments.count %>
-Share on : <%= social_share_button_tag(s.title, :url => "http://www.confessbin.com/secrets/#{s.id}") %>
+<%= social_share_button_tag(s.title, :url => "http://www.confessbin.com/secrets/#{s.id}") %>
 </div>
 <!-- Likes:   -->
 <!-- <a href="/new_like//secret">Like</a> -->
 <% end %>
 </div>
+</div>
 <script type="text/javascript">
-var $container = $('#container');
-// initialize
-$container.masonry({
-  columnWidth: 200,
-  itemSelector: '.item'
-});
-var msnry = $container.data('masonry');
+
 </script>
