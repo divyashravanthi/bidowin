@@ -10,13 +10,25 @@
 <div class="container" id="container">
 	<div class="col-md-3"></div>
 	<div class="col-md-6 text-center">
-		<br/>
-		<h4>POST A NEW SECRET:</h4>
-		<%= form_for Secret.new do |f| %>
-			<!-- <input type="text" name="title" class="form-control secret-input" placeholder="Title"/><br/> -->
-			<textarea name="description" class="form-control secret-input" rows="6" placeholder="Discuss more"></textarea><br/>
-			<input type="submit" class="btn btn-info"/>
-		<% end %>
+		<input type="button" class="btn btn-info post-btn" value="POST A SECRET !"/>
+		<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">POST A SECRET !</h4>
+            </div>
+            <div class="modal-body">
+				<%= form_for Secret.new do |f| %>
+					<!-- <input type="text" name="title" class="form-control secret-input" placeholder="Title"/><br/> -->
+					<textarea name="description" class="form-control secret-input" rows="6" placeholder="Discuss more"></textarea><br/>
+					<input type="submit" class="btn btn-info"/>
+				<% end %>
+            </div>
+            
+        </div>
+    </div>
+</div>
 	</div>
 <br/>
 <div class="row">
@@ -24,9 +36,11 @@
 <br/>
 <% @secrets.each do |s| %>
 <div class="col-md-3 secret-box">
-<%= s.description %>
+	<div class="secret-text">
+		<%= s.description %>
+	</div>
 <hr/>
-Comments: <%= s.comments.count %>
+<%= s.comments.count %> Comments 
 <%= social_share_button_tag(s.title, :url => "http://www.confessbin.com/secrets/#{s.id}") %>
 </div>
 <!-- Likes:   -->
@@ -35,5 +49,12 @@ Comments: <%= s.comments.count %>
 </div>
 </div>
 <script type="text/javascript">
-
+$(".secret-text").each(function(){
+	var str = $(this).html();
+	$(this).html(str.substr(0,90)+"<br/><a>Click for more..</a>");
+});
+$(".post-btn").click(function(){
+	$("#myModal").modal('show');
+});
+// $(".post-secret").modal()
 </script>
