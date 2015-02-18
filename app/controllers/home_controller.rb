@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-  	@secrets = Secret.all.includes(:comments)
+  	@search = Secret.search(params[:q])
+  	@secrets = @search.result
   end
 end
