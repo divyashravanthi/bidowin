@@ -31,9 +31,12 @@
     </div>
   </div>
 </header>
-<section class="">
-  <div class="container"></div>
-</section>
+<br/>
+<div class="container secret-desc" style="padding: 10px 15px;">
+	Trending: <% SimpleHashtag::Hashtag.all.order(created_at: :desc).take(20).each do |h| %>
+		<%= link_to "#"+h.name+" ", home_index_path(:hash => h.name) %>
+	<% end %>
+</div>
 <%= yield %>
 <div id="myModal" class="modal fade">
   <div class="modal-dialog">
