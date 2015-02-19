@@ -35,6 +35,21 @@
   <div class="container"></div>
 </section>
 <%= yield %>
-
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">POST A SECRET !</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for Secret.new do |f| %>
+        <textarea name="description" class="form-control secret-input" rows="6" placeholder="Write Your Confession"></textarea><br/>
+        <input type="submit" class="btn btn-info"/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
