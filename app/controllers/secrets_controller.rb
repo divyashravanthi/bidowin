@@ -16,6 +16,7 @@ class SecretsController < ApplicationController
 		@secret = Secret.friendly.find(params[:id])
 		@comments = @secret.comments
 		@comments_count = @comments.count
+		@search = Secret.search(params[:q])
 	end
 
 	def edit
