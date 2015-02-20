@@ -4,9 +4,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+# gem 'mysql2'
 
-# gem 'pg'
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -44,6 +44,10 @@ gem 'cancan'
 gem "friendly_id"
 
 gem 'simple_hashtag'
+
+gem 'capistrano', '2.15.5'
+
+gem 'rails_12factor', group: :production
 
 gem 'ransack'
 
