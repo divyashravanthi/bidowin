@@ -9,7 +9,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/uploads public/assets}
 set :scm, "git"
-set :repository, "git@bitbucket.org:ankitsamarthya/#{application}.git"
+set :repository, "git@bitbucket.org:divyashravanthi/#{application}.git"
 set :branch, "master"
 
 default_run_options[:pty] = true
