@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     	@secrets = @hashtag.hashtaggables if @hashtag
   	else
   		@secrets = @search.result
+  		@secrets = @secrets.order(created_at: :desc)
   	end
-  	@secrets = @secrets.sort_by {|obj| obj.created_at}
   end
 end
