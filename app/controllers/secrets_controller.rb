@@ -1,7 +1,4 @@
 class SecretsController < ApplicationController
-	def new
-		@secret = Secret.new
-	end
 
 	def create
 		secret = Secret.new
@@ -9,7 +6,7 @@ class SecretsController < ApplicationController
 		secret.description = params[:description]
 		secret.save
 		id = secret.id
-		redirect_to secret_path(:id => id)
+		redirect_to home_index_path
 	end
 
 	def show
@@ -17,12 +14,6 @@ class SecretsController < ApplicationController
 		@comments = @secret.comments
 		@comments_count = @comments.count
 		@search = Secret.search(params[:q])
-	end
-
-	def edit
-	end
-
-	def update
 	end
 
 	# def add_like
