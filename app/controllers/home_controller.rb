@@ -7,5 +7,6 @@ class HomeController < ApplicationController
   	else
   		@secrets = @search.result
   	end
+  	@secrets = @secrets.sort_by {|obj| obj.created_at}
   end
 end
