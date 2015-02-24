@@ -6,6 +6,18 @@ body{
 	background: #E6417D;
 	padding: 15px 0;
 }
+.footer-menu{
+	border-top: 1px solid #CD2267;
+	background: #E6417D;
+	padding: 10px 0;
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+}
+.footer-menu a{
+	color: white;
+	cursor: pointer;
+}
 .logo{
 	font-family: 'Cookie', cursive;
 	color: #fff;

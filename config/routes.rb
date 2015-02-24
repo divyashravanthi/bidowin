@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'home/index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
@@ -9,6 +8,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get 'privacy-policy' => 'home#privacy_policy'
+  get 'contact-us' => 'home#contact_us'
+  get 'about-us' => 'home#about_us'
+
+  resources :home
   resources :secrets
   resources :comments
 
