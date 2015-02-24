@@ -7,12 +7,13 @@ body{
 	padding: 15px 0;
 }
 .footer-menu{
-	border-top: 1px solid #CD2267;
-	background: #E6417D;
-	padding: 10px 0;
-	width: 100%;
-	position: fixed;
-	bottom: 0px;
+	
+border-top: 1px solid #335479;
+background: #425874;
+padding: 10px 0;
+width: 100%;
+position: fixed;
+bottom: 0px;
 }
 .footer-menu a{
 	color: white;
@@ -133,7 +134,7 @@ body{
 }
 body{
 	background-color: #253545;
-	color: goldenrod;
+	color: rgb(224, 233, 239);
 }
 /*.container{
 	margin-top: 20px;
@@ -243,4 +244,7 @@ a .secret-content {
 }
 a{
 	text-decoration: none !important;
+}
+.about{
+	font-size: 16px;
 }
